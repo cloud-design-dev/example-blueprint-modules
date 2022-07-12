@@ -20,3 +20,8 @@ variable "cos_storage_plan" {
   description = "COS plan"
   default     = "standard"
 }
+
+variable "vpc_region" {
+  description = "Name of the VPC region."
+  type        = string
+}
