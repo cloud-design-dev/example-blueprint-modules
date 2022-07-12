@@ -9,8 +9,15 @@ resource "ibm_resource_instance" "cos_instance" {
 }
 
 
-resource "ibm_cos_bucket" "zone_1" {
-  bucket_name          = "${var.vpc_region}-1-${var.name}-bucket"
+resource "ibm_cos_bucket" "frontend" {
+  bucket_name          = "${var.name}-${var.vpc_region}-frontend-bucket"
+  resource_instance_id = ibm_resource_instance.cos_instance.id
+  region_location      = var.vpc_region
+  storage_class        = var.cos_storage_class
+}
+
+resource "ibm_cos_bucket" "backend" {
+  bucket_name          = "${var.name}-${var.vpc_region}-backend-bucket"
   resource_instance_id = ibm_resource_instance.cos_instance.id
   region_location      = var.vpc_region
   storage_class        = var.cos_storage_class
