@@ -3,11 +3,9 @@ resource "ibm_resource_instance" "cos_instance" {
   service           = "cloud-object-storage"
   plan              = "standard"
   location          = "global"
-  resource_group_id = data.ibm_resource_group.group.id
+  resource_group_id = var.resource_group_id
   tags              = ["vpc:${var.name}-vpc"]
-
 }
-
 
 resource "ibm_cos_bucket" "frontend" {
   bucket_name          = "${var.name}-${var.vpc_region}-frontend-bucket"
