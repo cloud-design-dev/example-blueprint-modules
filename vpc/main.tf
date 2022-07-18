@@ -31,3 +31,16 @@ resource "ibm_is_subnet" "backend_subnet" {
   public_gateway           = ibm_is_public_gateway.zone_1.id
   tags                     = concat(var.tags, ["region:${var.vpc_region}", "zone:${data.ibm_is_zones.region.zones[0]}", "vpc:${var.name}-vpc"])
 }
+
+module "bastion" {
+  source = "we-work-in-the-cloud/vpc-bastion/ibm"
+
+  vpc_id            = ibm_is_vpc.vpc.id
+  resource_group_id = data.ibm_resource_group.group.id
+  name              = "${var.name}-bastion"
+  ssh_key_ids       = [data.ibm_is_ssh_key.regional.id]
+  subnet_id         = ibm_is_subnet.frontend_subnet.id
+  create_public_ip  = true
+  allow_ssh_from = var.allow_ssh_from
+  tags                     = concat(var.tags, ["region:${var.vpc_region}", "zone:${data.ibm_is_zones.region.zones[0]}", "vpc:${var.name}-vpc"])
+}

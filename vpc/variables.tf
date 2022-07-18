@@ -23,3 +23,8 @@ variable "ssh_key_name" {
   description = "The name of the SSH key to use for the VPC."
   type        = string
 }
+
+variable "allow_ssh_from" {
+  description = "The Ip or CIDR block to allow SSH access from."
+  type        = string
+}

@@ -29,3 +29,11 @@ output "resource_group_id" {
 output "ssh_key_id" {
   value = data.ibm_is_ssh_key.regional.id
 }
+
+output "bastion_maintenance_group_id" {
+  value = module.bastion.bastion_maintenance_group_id
+}
+
+output "bastion_public_ip" {
+  value = module.bastion.bastion_public_ip
+}
