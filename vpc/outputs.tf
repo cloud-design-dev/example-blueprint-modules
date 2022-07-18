@@ -37,3 +37,7 @@ output "bastion_maintenance_group_id" {
 output "bastion_public_ip" {
   value = module.bastion.bastion_public_ip
 }
+
+output "deployment_zone" {
+  value = data.ibm_is_zones.region.zones[0]
+}
