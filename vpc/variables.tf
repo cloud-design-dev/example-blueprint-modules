@@ -29,4 +29,3 @@ variable "allow_ssh_from" {
   type        = string
 }
 
-variable "ibmcloud_api_key" {}
