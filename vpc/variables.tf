@@ -28,3 +28,5 @@ variable "allow_ssh_from" {
   description = "The Ip or CIDR block to allow SSH access from."
   type        = string
 }
+
+variable "ibmcloud_api_key" {}

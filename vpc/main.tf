@@ -41,6 +41,6 @@ module "bastion" {
   ssh_key_ids       = [data.ibm_is_ssh_key.regional.id]
   subnet_id         = ibm_is_subnet.frontend_subnet.id
   create_public_ip  = true
-  allow_ssh_from = var.allow_ssh_from
-  tags                     = concat(var.tags, ["region:${var.vpc_region}", "zone:${data.ibm_is_zones.region.zones[0]}", "vpc:${var.name}-vpc"])
+  allow_ssh_from    = var.allow_ssh_from
+  tags              = concat(var.tags, ["region:${var.vpc_region}", "zone:${data.ibm_is_zones.region.zones[0]}", "vpc:${var.name}-vpc"])
 }
